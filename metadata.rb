@@ -1,0 +1,10 @@
+name             'opsline-dogwatch'
+maintainer       'Radek Wierzbicki'
+maintainer_email 'radek@opsline.com'
+license          'All rights reserved'
+description      'Installs/Configures opsline-dogwatch'
+long_description 'Installs/Configures opsline-dogwatch'
+version          '0.1.0'
+
+depends 'python'
+depends 'logrotate'

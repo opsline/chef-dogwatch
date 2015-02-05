@@ -1,0 +1,20 @@
+---
+aws:
+    region: <%= node['opsline-dogwatch']['aws']['region'] %>
+datadog:
+    api_key: <%= node['opsline-dogwatch']['datadog']['api_key'] %>
+    application_key: <%= node['opsline-dogwatch']['datadog']['application_key'] %>
+metrics:
+<% node['opsline-dogwatch']['metrics'].each do |mname, mdata| -%>
+    <%= mname %>:
+        datadog:
+            query: <%= mdata['datadog']['query'] %>
+        cloudwatch:
+            namespace: <%= mdata['cloudwatch']['namespace'] %>
+            name: <%= mdata['cloudwatch']['name'] %>
+            unit: <%= mdata['cloudwatch']['unit'] %>
+            dimensions:
+<% mdata.each do |dname, dvalue| -%>
+                <%= dname %>: <%= dvalue %>
+<% end -%>
+<% end -%>
