@@ -14,7 +14,7 @@ metrics:
             name: <%= mdata['cloudwatch']['name'] %>
             unit: <%= mdata['cloudwatch']['unit'] %>
             dimensions:
-<% mdata.each do |dname, dvalue| -%>
+              <% mdata['cloudwatch']['dimensions'].each do |dname, dvalue| -%>
                 <%= dname %>: <%= dvalue %>
-<% end -%>
+              <% end -%>
 <% end -%>
