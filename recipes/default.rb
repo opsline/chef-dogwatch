@@ -31,7 +31,7 @@ user node['opsline-dogwatch']['user'] do
   action :create
   system true
   gid node['opsline-dogwatch']['group']
-  comment "Dogwatch User"
+  comment 'Dogwatch User'
   supports :manage_home => true
   home "/home/#{node['opsline-dogwatch']['user']}"
   shell '/bin/bash'
@@ -48,14 +48,14 @@ end
 file '/var/log/dogwatch.log' do
   owner node['opsline-dogwatch']['user']
   group node['opsline-dogwatch']['group']
-  mode 0644
+  mode 0640
 end
 
 template '/etc/dogwatch.yaml' do
   source 'dogwatch.yaml.erb'
-  owner 'root'
-  group 'root'
-  mode 0755
+  owner node['opsline-dogwatch']['user']
+  group node['opsline-dogwatch']['group']
+  mode 0600
   variables({})
   action :create
 end
@@ -74,5 +74,5 @@ logrotate_app 'dogwatch' do
   options ['missingok', 'compress', 'notifempty', 'delaycompress']
   frequency 'daily'
   rotate 7
-  create "644 #{node['opsline-dogwatch']['user']} #{node['opsline-dogwatch']['group']}"
+  create "640 #{node['opsline-dogwatch']['user']} #{node['opsline-dogwatch']['group']}"
 end

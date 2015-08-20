@@ -4,7 +4,7 @@ maintainer_email 'radek@opsline.com'
 license          'All rights reserved'
 description      'Installs/Configures opsline-dogwatch'
 long_description 'Installs/Configures opsline-dogwatch'
-version          '0.1.1'
+version          '0.1.2'
 
 depends 'python'
 depends 'logrotate'

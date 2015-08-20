@@ -1,5 +1,8 @@
 # CHANGELOG for opsline-dogwatch
 
+## 0.1.2
+* restricting file permissions
+
 ## 0.1.1
 * template bug fix - incorrectly accessing dimensions
 
